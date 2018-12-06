@@ -1,0 +1,906 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 47,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "decimals": 3,
+      "fill": 10,
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 53,
+      "interval": "100ms",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sideWidth": 200,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 0,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/P/",
+          "color": "#bf1b00",
+          "fill": 5,
+          "linewidth": 0,
+          "zindex": 2
+        },
+        {
+          "alias": "/I/",
+          "color": "#e5ac0e",
+          "fill": 5,
+          "zindex": -1
+        },
+        {
+          "alias": "Angle - F",
+          "color": "#65c5db",
+          "zindex": 0
+        },
+        {
+          "alias": "Rate - F",
+          "color": "#0a50a1",
+          "zindex": 0
+        }
+      ],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": true,
+      "targets": [
+        {
+          "alias": "$col",
+          "groupBy": [],
+          "measurement": "steerData3",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT p * ff_type_a * 100 AS \"Angle - P\",  p * ff_type_r * 100 AS \"Rate - P\", i * ff_type_a *100 AS \"Angle - I\",  i * ff_type_r *100 AS \"Rate - I\", f * ff_type_a * 100 AS \"Angle - F\" ,  f * ff_type_r * 100 AS \"Rate - F\"   FROM \"steerData3\" WHERE $timeFilter",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "p"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "*100"
+                ],
+                "type": "math"
+              },
+              {
+                "params": [
+                  "p_a"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "i"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "*100"
+                ],
+                "type": "math"
+              },
+              {
+                "params": [
+                  "i_a"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "f"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "*100"
+                ],
+                "type": "math"
+              },
+              {
+                "params": [
+                  "f_a"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "ff_type",
+              "operator": "=",
+              "value": "a"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Requested Steering Torque",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": "85",
+          "min": "-75",
+          "show": true
+        },
+        {
+          "decimals": 0,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": "106",
+          "min": "-106",
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": true,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "decimals": 1,
+      "fill": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 6
+      },
+      "id": 51,
+      "interval": "100ms",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "hideEmpty": true,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sideWidth": 200,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Actual Angle",
+          "color": "#bf1b00"
+        },
+        {
+          "alias": "Resonant Period",
+          "lines": false
+        },
+        {
+          "alias": "Acceleration Limit",
+          "lines": false
+        },
+        {
+          "alias": "Angle Factor",
+          "lines": false
+        },
+        {
+          "alias": "Rate Factor",
+          "lines": false
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "$col",
+          "groupBy": [],
+          "measurement": "steerData3",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT .5 + \"sent_apply_steer\"  / -1000 AS \"OpenPilot Steer Command\", \"angle_steers\" AS \"Actual Angle\", \"actuator_steer_angle\" AS \"OP Desired Angle\", \"steer_torque_driver\"  / -1000 AS \"Driver Steering Override\" FROM \"steerData2\" WHERE $timeFilter",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "angle_steers_des"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "Desired Angle"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "angle_steers"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "Actual Angle"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "resonant_period"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "Resonant Period"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "accel_limit"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "Acceleration Limit"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "ff_angle_factor"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "Angle Factor"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "ff_rate_factor"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "Rate Factor"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Steering Angle",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": "15",
+          "min": "-15",
+          "show": true
+        },
+        {
+          "decimals": 0,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": true,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "decimals": 3,
+      "fill": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 11
+      },
+      "id": 56,
+      "interval": "10ms",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sideWidth": 200,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "$col",
+          "groupBy": [],
+          "measurement": "steerData3",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT .5 + \"sent_apply_steer\"  / -1000 AS \"OpenPilot Steer Command\", \"angle_steers\" AS \"Actual Angle\", \"actuator_steer_angle\" AS \"OP Desired Angle\", \"steer_torque_driver\"  / -1000 AS \"Driver Steering Override\" FROM \"steerData2\" WHERE $timeFilter",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "delta"
+                ],
+                "type": "field"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "curvature_factor"
+                ],
+                "type": "field"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "x"
+                ],
+                "type": "field"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "y"
+                ],
+                "type": "field"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "psi"
+                ],
+                "type": "field"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "slip_factor"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Angular Acceleration",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "decimals": 0,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": true,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "decimals": 3,
+      "fill": 5,
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "id": 54,
+      "interval": "10ms",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sideWidth": 200,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "$col",
+          "groupBy": [],
+          "measurement": "steerData3",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT .5 + \"sent_apply_steer\"  / -1000 AS \"OpenPilot Steer Command\", \"angle_steers\" AS \"Actual Angle\", \"actuator_steer_angle\" AS \"OP Desired Angle\", \"steer_torque_driver\"  / -1000 AS \"Driver Steering Override\" FROM \"steerData2\" WHERE $timeFilter",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "angle_rate"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "Actual Rate"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "angle_rate_desired"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "Desired Rate"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "restricted_steer_rate"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "Target Rate"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Angular Rate",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": "10",
+          "min": "-10",
+          "show": true
+        },
+        {
+          "decimals": 0,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": "500",
+          "min": "-500",
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": true,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "decimals": 3,
+      "fill": 5,
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 19
+      },
+      "id": 55,
+      "interval": "10ms",
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "hideEmpty": true,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sideWidth": 200,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Desired Accel",
+          "color": "#bf1b00"
+        },
+        {
+          "alias": "Restricted Accel",
+          "color": "#629e51"
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "$col",
+          "groupBy": [],
+          "measurement": "steerData3",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT .5 + \"sent_apply_steer\"  / -1000 AS \"OpenPilot Steer Command\", \"angle_steers\" AS \"Actual Angle\", \"actuator_steer_angle\" AS \"OP Desired Angle\", \"steer_torque_driver\"  / -1000 AS \"Driver Steering Override\" FROM \"steerData2\" WHERE $timeFilter",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "angle_rate_desired"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "-angle_rate"
+                ],
+                "type": "math"
+              },
+              {
+                "params": [
+                  "Desired Accel"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "restricted_steer_rate"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "-angle_rate"
+                ],
+                "type": "math"
+              },
+              {
+                "params": [
+                  "Restricted Accel"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Angular Acceleration",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "short",
+          "label": "",
+          "logBase": 1,
+          "max": "10",
+          "min": "-10",
+          "show": true
+        },
+        {
+          "decimals": 0,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": "500",
+          "min": "-500",
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": true,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 16,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "2018-12-02T19:41:02.888Z",
+    "to": "2018-12-02T19:41:22.888Z"
+  },
+  "timepicker": {
+    "nowDelay": "",
+    "refresh_intervals": [
+      "100ms",
+      " 150ms",
+      " 200ms",
+      " 300ms",
+      " 500ms",
+      " 1s",
+      " 2s",
+      " 3s",
+      " 4s",
+      " 5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Steering 10_k",
+  "uid": "vMnoe_Ymz",
+  "version": 4
+}
