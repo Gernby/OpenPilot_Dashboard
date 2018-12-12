@@ -27,3 +27,5 @@ Load Grafana in your browser (localhost:3000), and login using the default user 
 On the main page, go to the settings menu, and click "Data Sources".  Then click the Add data sources button, and select influxDB.  If you used all the standard settings for influxDB, the only parameters you need to enter in this screen are `http://localhost:8086` for the URL, and `carDB` for the database.
 
 All that's left should be creating a dashboard, which can be imported from this repo.
+
+Actually, you still need to run a python client while connected to the EON somehow (WiFi tethering works very well).  The client in this repository has several ports I've used with preconfigured influx insert strings.
