@@ -7,9 +7,8 @@ USER = ''
 PASSWORD = ''
 DBNAME = 'carDB'
 influx = InfluxDBClient('localhost', 8086, USER, PASSWORD, DBNAME)
-
 influxLineString = ""
-latControlstring = 'steerData3,testName=secondRun,active=%s,ff_type=%s ff_type_a=%s,ff_type_r=%s,steer_parameter1=%s,steer_parameter2=%s,steer_parameter3=%s,steer_parameter4=%s,x=%s,y=%s,psi=%s,delta=%s,t=%s,curvature_factor=%s,slip_factor=%s,resonant_period=%s,accel_limit=%s,restricted_steer_rate=%s,ff_angle_factor=%s,ff_rate_factor=%s,pCost=%s,lCost=%s,rCost=%s,hCost=%s,srCost=%s,' + \
+latControlstring = 'steerData3,testName=secondRun,active=%s,ff_type=%s ff_type_a=%s,ff_type_r=%s,steer_status=%s,steer_torque_motor=%s,steering_control_active=%s,steer_parameter1=%s,steer_parameter2=%s,steer_parameter3=%s,steer_parameter4=%s,steer_parameter5=%s,steer_parameter6=%s,steer_stock_torque=%s,steer_stock_torque_request=%s,x=%s,y=%s,y1=%s,y2=%s,y3=%s,y3=%s,psi=%s,delta=%s,t=%s,curvature_factor=%s,slip_factor=%s,resonant_period=%s,accel_limit=%s,restricted_steer_rate=%s,ff_angle_factor=%s,ff_rate_factor=%s,pCost=%s,lCost=%s,rCost=%s,hCost=%s,srCost=%s,' + \
                     'steer_torque_motor=%s,driver_torque=%s,angle_rate_count=%s,angle_rate_desired=%s,avg_angle_rate=%s,future_angle_steers=%s,angle_rate=%s,steer_zero_crossing=%s,' + \
                     'center_angle=%s,angle_steers=%s,angle_steers_des=%s,angle_offset=%s,self.angle_steers_des_mpc=%s,' + \
                     'steerRatio=%s,steerKf=%s,steerKpV[0]=%s,steerKiV[0]=%s,steerRateCost=%s,l_prob=%s,r_prob=%s,c_prob=%s,p_prob=%s,' + \
@@ -84,9 +83,8 @@ words = [0,0,0,0]
 swords = [0,0,0,0]
 
 while 1:
-    
   try:
-    socks = dict(poller.poll(500))
+    socks = dict(poller.poll(5))
 
   except KeyboardInterrupt:
     can_socket.close()
@@ -171,7 +169,9 @@ while 1:
         influxLineString += thisData
 
       if thisData is not None and sock is lat_socket:
-        strData = thisData.split('|')
+        strData = thisData.split('~')
+        latControlstring = strData[0]
+        strData = strData[1].split('|')
         for strFrame in strData:
           strValues = strFrame.split(',')
           if len(strValues) > 10:
