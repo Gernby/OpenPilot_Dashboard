@@ -6,16 +6,7 @@ The UI is web-based, and runs on every platform I've tried, including my iPhone.
 
 If you are running a custom fork of OpenPilot, you can publish generic ZMQ feeds to the server without much effort.  My fork of OpenPilot has a generic stream of raw CAN data coming from parcer.cc at a frame rate of 10Hz.  I also have generic streams coming from various other Python modules, depending on what I'm trying to do with the branch.  If you want to run the standard fork of OpenPilot, you will need additional libraries on your server.  
 
-The primary dependencies for generic (non-serealized) ZMQ streams are Python, ZMQ, influxDB, and Grafana.  I suggest installing these packages using the instructions for your operating system. 
-
-ZMQ
-http://zeromq.org/bindings:python
-
-influxDB
-https://github.com/influxdata/influxdb
-
-Grafana
-https://grafana.com/grafana/download
+The primary dependencies for generic (non-serealized) ZMQ streams are Python, [ZMQ](http://zeromq.org/bindings:python), [InfluxDB](https://github.com/influxdata/influxdb), and [Grafana](https://grafana.com/grafana/download).  I suggest installing these packages using the instructions for your operating system. 
 
 Once you've installed these packages with their defaults, there's just a couple things that need to be configured before running the dashboard. 
 
