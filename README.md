@@ -8,6 +8,11 @@ If you are running a custom fork of OpenPilot, you can publish generic ZMQ feeds
 
 The primary dependencies for generic (non-serealized) ZMQ streams are Python, [ZMQ](http://zeromq.org/bindings:python), [InfluxDB](https://github.com/influxdata/influxdb), and [Grafana](https://grafana.com/grafana/download).  I suggest installing these packages using the instructions for your operating system. 
 
+Depending on your OS, the install commands below might really be helpful:  
+`pip install influxdb`  
+`pip install grafana-server`  
+`pip install pyzmq`
+
 Once you've installed these packages with their defaults, there's just a couple things that need to be configured before running the dashboard. 
 
 Create a database in influx called 'carDB'.  This is done using the influx client in a command line.  
