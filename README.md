@@ -1,4 +1,6 @@
-![honda steering torque7](https://user-images.githubusercontent.com/6308011/50301232-603ac280-044c-11e9-9de4-4503d3efc7a0.png)
+![steering](https://github.com/Gernby/OpenPilot_Dashboard/blob/master/SteeringDashboard.png)
+
+![binary](https://github.com/Gernby/OpenPilot_Dashboard/blob/master/BinaryDashboard.png)
 
 # OpenPilot_Dashboard
 
