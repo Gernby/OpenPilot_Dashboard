@@ -17,12 +17,14 @@ Depending on your OS, the install commands below might really be helpful:
 `pip install grafana-server`  
 `pip install pyzmq`
 
-Once you've installed these packages with their defaults, there's just a couple things that need to be configured before running the dashboard. 
+Once you've installed these packages with their defaults (and started them), there's just a couple things that need to be configured before loading the dashboards. 
 
-Create a database in influx called 'carDB'.  This is done using the influx client in a command line.  
+Create a database in influx called 'carDB'.  This is done using the influx client in a command line. 
 `> create database carDB`
 
-Load Grafana in your browser (localhost:3000), and login using the default user and password, which I think it just "admin" with no password.
+_*Note: The http interface to influxDB isn't navigable.  It will return a 404 error if you open it in a browser.*_
+
+Load Grafana in your browser (https://localhost:3000), and login using the default user and password, which I think it just "admin" with no password.
 
 On the main page, go to the settings menu, and click "Data Sources".  Then click the Add data sources button, and select influxDB.  If you used all the standard settings for influxDB, the only parameters you need to enter in this screen are `http://localhost:8086` for the URL, and `carDB` for the database.
 
