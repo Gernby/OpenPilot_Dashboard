@@ -44,3 +44,6 @@ For more info regarding  Grafana, Please go to the following link(http://docs.gr
 All that's left should be creating a dashboard, which can be imported from this repo.
 
 Actually, you still need to run a python client while connected to the EON somehow (WiFi tethering works very well).  The client in this repository has several ports I've used with preconfigured influx insert strings.
+
+If you need help running local network on EON or tethering, Please go to the following link (https://openmechanics.github.io/ssh)
+
