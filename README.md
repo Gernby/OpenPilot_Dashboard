@@ -22,11 +22,22 @@ Once you've installed these packages with their defaults (and started them), the
 Create a database in influx called 'carDB'.  This is done using the influx client in a command line. 
 `> create database carDB`
 
-_*Note: The http interface to influxDB isn't navigable.  It will return a 404 error if you open it in a browser.*_
+_*Note: The http interface to influxDB isn't navigable.  It will return a 404 error if you open it in a browser since it doesn't have index however you can verify by going to query http://localhost:8086/query *_
 
 Load Grafana in your browser (https://localhost:3000), and login using the default user and password, which I think it just "admin" with no password.
 
 On the main page, go to the settings menu, and click "Data Sources".  Then click the Add data sources button, and select influxDB.  If you used all the standard settings for influxDB, the only parameters you need to enter in this screen are `http://localhost:8086` for the URL, and `carDB` for the database.
+
+![binary](https://i.imgur.com/qJjZYen.png)
+
+Now click on + on left side of the menu and then import where you paste the one of the following JSON. You can either get both or just one.
+
+![binary](https://i.imgur.com/yVr3ZrB.png)
+Raw CAN Dashboard - Binary`https://raw.githubusercontent.com/Gernby/OpenPilot_Dashboard/master/Raw%20CAN%20Dashboard%20-%20Binary`
+Steering_Dashboard - Binary`https://raw.githubusercontent.com/Gernby/OpenPilot_Dashboard/master/Steering_Dashboard`
+
+![binary](https://i.imgur.com/4Te8yMf.png)
+![binary](https://i.imgur.com/cAMiIwj.png)
 
 All that's left should be creating a dashboard, which can be imported from this repo.
 
