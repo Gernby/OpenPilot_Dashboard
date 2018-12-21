@@ -33,11 +33,13 @@ On the main page, go to the settings menu, and click "Data Sources".  Then click
 Now click on + on left side of the menu and then import where you paste the one of the following JSON. You can either get both or just one.
 
 ![binary](https://i.imgur.com/yVr3ZrB.png)
-Raw CAN Dashboard - Binary`https://raw.githubusercontent.com/Gernby/OpenPilot_Dashboard/master/Raw%20CAN%20Dashboard%20-%20Binary`
-Steering_Dashboard - Binary`https://raw.githubusercontent.com/Gernby/OpenPilot_Dashboard/master/Steering_Dashboard`
+Raw CAN Dashboard (https://raw.githubusercontent.com/Gernby/OpenPilot_Dashboard/master/Raw%20CAN%20Dashboard%20-%20Binary)
+Steering_Dashboard (https://raw.githubusercontent.com/Gernby/OpenPilot_Dashboard/master/Steering_Dashboard)
 
 ![binary](https://i.imgur.com/4Te8yMf.png)
 ![binary](https://i.imgur.com/cAMiIwj.png)
+
+For more info regarding  Grafana, Please go to the following link(http://docs.grafana.org/installation/) another note make sure Grafana server is running or elsee everything will be null.
 
 All that's left should be creating a dashboard, which can be imported from this repo.
 
