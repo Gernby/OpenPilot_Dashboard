@@ -113,7 +113,7 @@ while 1:
 
       receiveTime = int(time.time() * 1000000000)
 
-      doRecordCANData = True
+      doRecordCANData = False
       doRecordCANBytes = False
       
       recordBus = ['0','1','2','128','129','130']

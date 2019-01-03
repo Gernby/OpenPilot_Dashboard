@@ -2,7 +2,22 @@
 
 ![binary](https://github.com/Gernby/OpenPilot_Dashboard/blob/master/BinaryDashboard.png)
 
-# OpenPilot_Dashboard
+# Windows 10 OpenPilot_Dashboard Quick setup
+
+1. [Download ZIP File](../../archive/master.zip)
+2. Extract `OpenPilot_Dashboard-master.zip`
+3. Run `install.bat` to install Python 2.7 and dependencies. Click Yes on the UAC security prompt to allow it to install. When it's done, press any key to continue at the prompt. You only need to install this once.
+4. Make sure your EON is running a branch that includes Gernby's ZMQ Forwarder. Enable the hotspot tethering on your EON and connect your computer to it.
+5. Start your car.
+6. Click `run.bat` to start InfluxDB, Grafana, and the ZMQ influx Client.
+7. A browser window will open the Grafana web interface located at http://localhost:3000
+Username: admin
+Password: admin
+8. Click the Home drop down menu and select one of the dashboards. Example: `Steering 10_k`
+9. To begin viewing live data, select the date picker in the upper right and enter From: `now-15s` and select Refreshing every `200ms`. Click Apply.
+10. Start driving and Engage openpilot. Data will start to flow into the dashboard once openpilot is engaged.
+
+# OpenPilot_Dashboard Generic Setup Instructions
 
 This dashboard has been invalluable to me while enhancing lateral control for OpenPilot, and think it would be equally valuable to anyone that's trying to resolve a lateral tuning issue.
 
