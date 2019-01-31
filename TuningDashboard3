@@ -520,7 +520,7 @@
           "measurement": "steerData3",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT angle_steers_des as \"Desired Angle\", angle_steers as \"Actual Angle\", p * ff_type_a * 100 AS \"Angle - P\",  p * ff_type_r * 100 AS \"Rate - P\", i * ff_type_a *100 AS \"Angle - I\",  i * ff_type_r *100 AS \"Rate - I\", f * ff_type_a * 100 AS \"Angle - F\" ,  f * ff_type_r * 100 AS \"Rate - F\" , resistance, inductance, reactance , eonToFront, ((-sway * 10) - 10) as "sway" FROM \"steerData3\" WHERE $timeFilter",
+          "query": "SELECT angle_steers_des as \"Desired Angle\", angle_steers as \"Actual Angle\", p * ff_type_a * 100 AS \"Angle - P\",  p * ff_type_r * 100 AS \"Rate - P\", i * ff_type_a *100 AS \"Angle - I\",  i * ff_type_r *100 AS \"Rate - I\", f * ff_type_a * 100 AS \"Angle - F\" ,  f * ff_type_r * 100 AS \"Rate - F\" , resistance, inductance, reactance , eonToFront, ((-sway * 10) - 10) as \"sway\" FROM \"steerData3\" WHERE $timeFilter",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
