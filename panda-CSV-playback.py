@@ -19,6 +19,10 @@ rownumber = -1
 sleepTime = 0.0
 skipped = 0
 bus = 0
+
+while(p.health()['started'] == 0):
+  time.sleep(1)
+
 for row in csv_reader:
   (timestamp, address, bus, data) = row
   if rownumber >= 0 and int(bus) in (0,): 
@@ -26,9 +30,11 @@ for row in csv_reader:
       p.can_send_many(out_cans)
       print("total %d  skipped %d  sent %d  " % (rownumber, skipped, len(out_cans))) 
       out_cans = [] 
+      time.sleep(sleepTime)
     sleepTime = startTime + float(timestamp) - time.time()
-    if sleepTime > 0: time.sleep(sleepTime)
     out_cans += [[int(address), None, str(data).decode("hex"), int(bus)]]  
   else:
     skipped += 1
   rownumber += 1      
+
+  
