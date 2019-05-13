@@ -1,0 +1,103 @@
+[
+    {
+        "id": "514450d6.68807",
+        "type": "zeromq in",
+        "z": "50941576.fe52bc",
+        "name": "",
+        "topic": "",
+        "fields": "payload",
+        "server": "tcp://*:8594",
+        "output": "json",
+        "isserver": true,
+        "intype": "pull",
+        "x": 163,
+        "y": 122,
+        "wires": [
+            [
+                "faf769a8.12c2c8",
+                "6433a83e.d4e068"
+            ]
+        ]
+    },
+    {
+        "id": "f25b02f5.8559b",
+        "type": "http request",
+        "z": "50941576.fe52bc",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "tls": "",
+        "proxy": "",
+        "authType": "basic",
+        "x": 562.0000152587891,
+        "y": 126,
+        "wires": [
+            [
+                "f339fc41.53291"
+            ]
+        ]
+    },
+    {
+        "id": "faf769a8.12c2c8",
+        "type": "function",
+        "z": "50941576.fe52bc",
+        "name": "",
+        "func": "var newMsg={}\nnewMsg.url = 'http://192.168.1.3:8086/write?db=carDB&u=liveOP&p=liveOP&precision=ms';\nvar measurements = String(msg.payload);  //String(msg.payload).split(\"!\")\nvar splitMeasurements = measurements.split(\"!\");\nvar influxString = \"\"\nfor (var n = 0, len = splitMeasurements.length; n < len; n++) {\n    var parts = String(splitMeasurements[n]);\n    splitParts = parts.split(\"~\");\n    var splitColumns = splitParts[0].split(\";\");\n    var splitSamples = splitParts[1].split(\"|\");\n    for (var i = 0, len2 = splitSamples.length; i < len2 - 1; i++) {\n        var splitValues = splitSamples[i].split(\",\");\n        for (var k = 0, len3 = splitValues.length; k < len3 - 2; k++) {\n            influxString = influxString + splitColumns[k] + splitValues[k] + \",\";\n        }\n        influxString = influxString + splitColumns[k] + splitValues[k] + splitColumns[k+1] + splitValues[k+1] + \"\\n\";\n    }\n}\nnewMsg.payload = influxString;\n\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 331.00001525878906,
+        "y": 125.9999771118164,
+        "wires": [
+            [
+                "f25b02f5.8559b",
+                "d0813303.59fb8"
+            ]
+        ]
+    },
+    {
+        "id": "d0813303.59fb8",
+        "type": "debug",
+        "z": "50941576.fe52bc",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 530.7869110107422,
+        "y": 62.86079406738281,
+        "wires": []
+    },
+    {
+        "id": "6433a83e.d4e068",
+        "type": "debug",
+        "z": "50941576.fe52bc",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 342.01422119140625,
+        "y": 74.00568389892578,
+        "wires": []
+    },
+    {
+        "id": "f339fc41.53291",
+        "type": "debug",
+        "z": "50941576.fe52bc",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 787.007080078125,
+        "y": 122.00568389892578,
+        "wires": []
+    }
+]
