@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -13,399 +16,337 @@
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 6,
-  "iteration": 1545325097224,
+  "id": 2,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
-      "collapsed": false,
+      "datasource": {
+        "type": "influxdb",
+        "uid": "d119d2d5-0e3a-4d36-97b6-6c0ae657a3c1"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
       "gridPos": {
-        "h": 1,
+        "h": 7,
         "w": 24,
         "x": 0,
         "y": 0
       },
-      "id": 63,
-      "panels": [],
-      "repeat": "bus",
-      "scopedVars": {
-        "bus": {
-          "selected": true,
-          "text": "0",
-          "value": "0"
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
         }
       },
-      "title": "Bus $bus",
-      "type": "row"
+      "targets": [
+        {
+          "alias": "$tag_pid",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d119d2d5-0e3a-4d36-97b6-6c0ae657a3c1"
+          },
+          "groupBy": [],
+          "measurement": "CANData",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT \"d2\" FROM \"CANData\" WHERE (\"pid\"::tag = 'APStatus' OR \"pid\"::tag = 'speed' OR \"pid\" = 'steer') AND $timeFilter Group By pid",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "d1"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "pid::tag",
+              "operator": "=",
+              "value": "APStatus"
+            },
+            {
+              "condition": "OR",
+              "key": "pid::tag",
+              "operator": "=",
+              "value": "speed"
+            }
+          ]
+        }
+      ],
+      "type": "timeseries"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "decimals": 3,
-      "fill": 0,
+      "datasource": {
+        "type": "influxdb",
+        "uid": "d119d2d5-0e3a-4d36-97b6-6c0ae657a3c1"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic-by-name"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisGridShow": false,
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "stepAfter",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "max": 157,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
       "gridPos": {
-        "h": 17,
-        "w": 12,
+        "h": 27,
+        "w": 24,
         "x": 0,
-        "y": 1
+        "y": 7
       },
-      "id": 64,
-      "interval": "10ms",
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": true,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": true,
-        "show": false,
-        "sideWidth": 200,
-        "total": false,
-        "values": false
+      "id": 1,
+      "maxPerRow": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "minSpan": 1,
-      "nullPointMode": "null as zero",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
       "repeat": "pids",
       "repeatDirection": "h",
-      "scopedVars": {
-        "bus": {
-          "selected": true,
-          "text": "0",
-          "value": "0"
-        },
-        "pids": {
-          "selected": true,
-          "text": "148",
-          "value": "148"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": true,
       "targets": [
         {
-          "alias": "$col",
-          "groupBy": [],
-          "measurement": "rawCANData",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "select (((\"First32\"::integer & 2147483648) / 2147483648) + 155) as \"b63\", \n(((\"First32\"::integer & 1073741824) / 1073741824) + 153) as \"b62\", \n(((\"First32\"::integer & 536870912) / 536870912) + 151) as \"b61\", \n(((\"First32\"::integer & 268435456) / 268435456) + 149) as \"b60\", \n(((\"First32\"::integer & 134217728) / 134217728) + 147) as \"b59\", \n(((\"First32\"::integer & 67108864) / 67108864) + 145) as \"b58\", \n(((\"First32\"::integer & 33554432) / 33554432) + 143) as \"b57\", \n(((\"First32\"::integer & 16777216) / 16777216) + 141) as \"b56\", \n(((\"First32\"::integer & 8388608) / 8388608) + 135) as \"b55\", \n(((\"First32\"::integer & 4194304) / 4194304) + 133) as \"b54\", \n(((\"First32\"::integer & 2097152) / 2097152) + 131) as \"b53\", \n(((\"First32\"::integer & 1048576) / 1048576) + 129) as \"b52\", \n(((\"First32\"::integer & 524288) / 524288) + 127) as \"b51\", \n(((\"First32\"::integer & 262144) / 262144) + 125) as \"b50\", \n(((\"First32\"::integer & 131072) / 131072) + 123) as \"b49\", \n(((\"First32\"::integer & 65536) / 65536) + 121) as \"b48\", \n(((\"First32\"::integer & 32768) / 32768) + 115) as \"b47\", \n(((\"First32\"::integer & 16384) / 16384) + 113) as \"b46\", \n(((\"First32\"::integer & 8192) / 8192) + 111) as \"b45\", \n(((\"First32\"::integer & 4096) / 4096) + 109) as \"b44\", \n(((\"First32\"::integer & 2048) / 2048) + 107) as \"b43\", \n(((\"First32\"::integer & 1024) / 1024) + 105) as \"b42\", \n(((\"First32\"::integer & 512) / 512) + 103) as \"b41\", \n(((\"First32\"::integer & 256) / 256) + 101) as \"b40\", \n(((\"First32\"::integer & 128) / 128) + 95) as \"b39\", \n(((\"First32\"::integer & 64) / 64) + 93) as \"b38\", \n(((\"First32\"::integer & 32) / 32) + 91) as \"b37\", \n(((\"First32\"::integer & 16) / 16) + 89) as \"b36\", \n(((\"First32\"::integer & 8) / 8) + 87) as \"b35\", \n(((\"First32\"::integer & 4) / 4) + 85) as \"b34\", \n(((\"First32\"::integer & 2) / 2) + 83) as \"b33\", \n(((\"First32\"::integer & 1) / 1) + 81) as \"b32\", \n(((\"Second32\"::integer & 2147483648) / 2147483648) + 75) as \"b31\", \n(((\"Second32\"::integer & 1073741824) / 1073741824) + 73) as \"b30\", \n(((\"Second32\"::integer & 536870912) / 536870912) + 71) as \"b29\", \n(((\"Second32\"::integer & 268435456) / 268435456) + 69) as \"b28\", \n(((\"Second32\"::integer & 134217728) / 134217728) + 67) as \"b27\", \n(((\"Second32\"::integer & 67108864) / 67108864) + 65) as \"b26\", \n(((\"Second32\"::integer & 33554432) / 33554432) + 63) as \"b25\", \n(((\"Second32\"::integer & 16777216) / 16777216) + 61) as \"b24\", \n(((\"Second32\"::integer & 8388608) / 8388608) + 55) as \"b23\", \n(((\"Second32\"::integer & 4194304) / 4194304) + 53) as \"b22\", \n(((\"Second32\"::integer & 2097152) / 2097152) + 51) as \"b21\", \n(((\"Second32\"::integer & 1048576) / 1048576) + 49) as \"b20\", \n(((\"Second32\"::integer & 524288) / 524288) + 47) as \"b19\", \n(((\"Second32\"::integer & 262144) / 262144) + 45) as \"b18\", \n(((\"Second32\"::integer & 131072) / 131072) + 43) as \"b17\", \n(((\"Second32\"::integer & 65536) / 65536) + 41) as \"b16\", \n(((\"Second32\"::integer & 32768) / 32768) + 35) as \"b15\", \n(((\"Second32\"::integer & 16384) / 16384) + 33) as \"b14\", \n(((\"Second32\"::integer & 8192) / 8192) + 31) as \"b13\", \n(((\"Second32\"::integer & 4096) / 4096) + 29) as \"b12\", \n(((\"Second32\"::integer & 2048) / 2048) + 27) as \"b11\", \n(((\"Second32\"::integer & 1024) / 1024) + 25) as \"b10\", \n(((\"Second32\"::integer & 512) / 512) + 23) as \"b9\", \n(((\"Second32\"::integer & 256) / 256) + 21) as \"b8\", \n(((\"Second32\"::integer & 128) / 128) + 15) as \"b7\", \n(((\"Second32\"::integer & 64) / 64) + 13) as \"b6\", \n(((\"Second32\"::integer & 32) / 32) + 11) as \"b5\", \n(((\"Second32\"::integer & 16) / 16) + 9) as \"b4\", \n(((\"Second32\"::integer & 8) / 8) + 7) as \"b3\", \n(((\"Second32\"::integer & 4) / 4) + 5) as \"b2\", \n(((\"Second32\"::integer & 2) / 2) + 3) as \"b1\", \n(((\"Second32\"::integer & 1) / 1) + 1) as \"b0\"  FROM \"rawCANData\" WHERE $timeFilter and \"pid\" = '$pids' and \"bus\" = '$bus'",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d119d2d5-0e3a-4d36-97b6-6c0ae657a3c1"
+          },
+          "hide": false,
+          "query": "select (((\"d1\" & 2147483648) / 2147483648) + 155) as \"b63\", \n(((\"d1\" & 1073741824) / 1073741824) + 153) as \"b62\", \n(((\"d1\" & 536870912) / 536870912) + 151) as \"b61\", \n(((\"d1\" & 268435456) / 268435456) + 149) as \"b60\", \n(((\"d1\" & 134217728) / 134217728) + 147) as \"b59\", \n(((\"d1\" & 67108864) / 67108864) + 145) as \"b58\", \n(((\"d1\" & 33554432) / 33554432) + 143) as \"b57\", \n(((\"d1\" & 16777216) / 16777216) + 141) as \"b56\", \n(((\"d1\" & 8388608) / 8388608) + 135) as \"b55\", \n(((\"d1\" & 4194304) / 4194304) + 133) as \"b54\", \n(((\"d1\" & 2097152) / 2097152) + 131) as \"b53\", \n(((\"d1\" & 1048576) / 1048576) + 129) as \"b52\", \n(((\"d1\" & 524288) / 524288) + 127) as \"b51\", \n(((\"d1\" & 262144) / 262144) + 125) as \"b50\", \n(((\"d1\" & 131072) / 131072) + 123) as \"b49\", \n(((\"d1\" & 65536) / 65536) + 121) as \"b48\", \n(((\"d1\" & 32768) / 32768) + 115) as \"b47\", \n(((\"d1\" & 16384) / 16384) + 113) as \"b46\", \n(((\"d1\" & 8192) / 8192) + 111) as \"b45\", \n(((\"d1\" & 4096) / 4096) + 109) as \"b44\", \n(((\"d1\" & 2048) / 2048) + 107) as \"b43\", \n(((\"d1\" & 1024) / 1024) + 105) as \"b42\", \n(((\"d1\" & 512) / 512) + 103) as \"b41\", \n(((\"d1\" & 256) / 256) + 101) as \"b40\", \n(((\"d1\" & 128) / 128) + 95) as \"b39\", \n(((\"d1\" & 64) / 64) + 93) as \"b38\", \n(((\"d1\" & 32) / 32) + 91) as \"b37\", \n(((\"d1\" & 16) / 16) + 89) as \"b36\", \n(((\"d1\" & 8) / 8) + 87) as \"b35\", \n(((\"d1\" & 4) / 4) + 85) as \"b34\", \n(((\"d1\" & 2) / 2) + 83) as \"b33\", \n(((\"d1\" & 1) / 1) + 81) as \"b32\", \n(((\"d2\" & 2147483648) / 2147483648) + 75) as \"b31\", \n(((\"d2\" & 1073741824) / 1073741824) + 73) as \"b30\", \n(((\"d2\" & 536870912) / 536870912) + 71) as \"b29\", \n(((\"d2\" & 268435456) / 268435456) + 69) as \"b28\", \n(((\"d2\" & 134217728) / 134217728) + 67) as \"b27\", \n(((\"d2\" & 67108864) / 67108864) + 65) as \"b26\", \n(((\"d2\" & 33554432) / 33554432) + 63) as \"b25\", \n(((\"d2\" & 16777216) / 16777216) + 61) as \"b24\", \n(((\"d2\" & 8388608) / 8388608) + 55) as \"b23\", \n(((\"d2\" & 4194304) / 4194304) + 53) as \"b22\", \n(((\"d2\" & 2097152) / 2097152) + 51) as \"b21\", \n(((\"d2\" & 1048576) / 1048576) + 49) as \"b20\", \n(((\"d2\" & 524288) / 524288) + 47) as \"b19\", \n(((\"d2\" & 262144) / 262144) + 45) as \"b18\", \n(((\"d2\" & 131072) / 131072) + 43) as \"b17\", \n(((\"d2\" & 65536) / 65536) + 41) as \"b16\", \n(((\"d2\" & 32768) / 32768) + 35) as \"b15\", \n(((\"d2\" & 16384) / 16384) + 33) as \"b14\", \n(((\"d2\" & 8192) / 8192) + 31) as \"b13\", \n(((\"d2\" & 4096) / 4096) + 29) as \"b12\", \n(((\"d2\" & 2048) / 2048) + 27) as \"b11\", \n(((\"d2\" & 1024) / 1024) + 25) as \"b10\", \n(((\"d2\" & 512) / 512) + 23) as \"b9\", \n(((\"d2\" & 256) / 256) + 21) as \"b8\", \n(((\"d2\" & 128) / 128) + 15) as \"b7\", \n(((\"d2\" & 64) / 64) + 13) as \"b6\", \n(((\"d2\" & 32) / 32) + 11) as \"b5\", \n(((\"d2\" & 16) / 16) + 9) as \"b4\", \n(((\"d2\" & 8) / 8) + 7) as \"b3\", \n(((\"d2\" & 4) / 4) + 5) as \"b2\", \n(((\"d2\" & 2) / 2) + 3) as \"b1\", \n(((\"d2\" & 1) / 1) + 1) as \"b0\"  FROM \"CANData\" WHERE $timeFilter and \"pid\" = '$pids' GROUP BY pid",
           "rawQuery": true,
           "refId": "A",
+          "resultFormat": "time_series"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "d119d2d5-0e3a-4d36-97b6-6c0ae657a3c1"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": true,
+          "measurement": "CANData",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"d1\") FROM \"CANData\" WHERE (\"pid\"::tag =~ /^$pids$/) AND $timeFilter GROUP BY time($__interval) fill(null)",
+          "rawQuery": true,
+          "refId": "B",
           "resultFormat": "time_series",
           "select": [
             [
               {
                 "params": [
-                  "First32"
+                  "d1"
                 ],
                 "type": "field"
-              }
-            ],
-            [
+              },
               {
-                "params": [
-                  "Second32"
-                ],
-                "type": "field"
+                "params": [],
+                "type": "mean"
               }
             ]
           ],
-          "tags": []
+          "tags": [
+            {
+              "key": "pid::tag",
+              "operator": "=~",
+              "value": "/^$pids$/"
+            }
+          ]
         }
       ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Bus $bus : PID $pids",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": null,
-          "format": "short",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        },
-        {
-          "decimals": null,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": true,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "decimals": 3,
-      "fill": 0,
-      "gridPos": {
-        "h": 17,
-        "w": 12,
-        "x": 12,
-        "y": 1
-      },
-      "id": 65,
-      "interval": "10ms",
-      "legend": {
-        "alignAsTable": false,
-        "avg": false,
-        "current": false,
-        "hideEmpty": true,
-        "hideZero": false,
-        "max": false,
-        "min": false,
-        "rightSide": true,
-        "show": false,
-        "sideWidth": 200,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "minSpan": 1,
-      "nullPointMode": "null as zero",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "repeat": null,
-      "repeatDirection": "h",
-      "repeatIteration": 1545325097224,
-      "repeatPanelId": 64,
-      "scopedVars": {
-        "bus": {
-          "selected": true,
-          "text": "0",
-          "value": "0"
-        },
-        "pids": {
-          "selected": true,
-          "text": "228",
-          "value": "228"
-        }
-      },
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": true,
-      "targets": [
-        {
-          "alias": "$col",
-          "groupBy": [],
-          "measurement": "rawCANData",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "select (((\"First32\"::integer & 2147483648) / 2147483648) + 155) as \"b63\", \n(((\"First32\"::integer & 1073741824) / 1073741824) + 153) as \"b62\", \n(((\"First32\"::integer & 536870912) / 536870912) + 151) as \"b61\", \n(((\"First32\"::integer & 268435456) / 268435456) + 149) as \"b60\", \n(((\"First32\"::integer & 134217728) / 134217728) + 147) as \"b59\", \n(((\"First32\"::integer & 67108864) / 67108864) + 145) as \"b58\", \n(((\"First32\"::integer & 33554432) / 33554432) + 143) as \"b57\", \n(((\"First32\"::integer & 16777216) / 16777216) + 141) as \"b56\", \n(((\"First32\"::integer & 8388608) / 8388608) + 135) as \"b55\", \n(((\"First32\"::integer & 4194304) / 4194304) + 133) as \"b54\", \n(((\"First32\"::integer & 2097152) / 2097152) + 131) as \"b53\", \n(((\"First32\"::integer & 1048576) / 1048576) + 129) as \"b52\", \n(((\"First32\"::integer & 524288) / 524288) + 127) as \"b51\", \n(((\"First32\"::integer & 262144) / 262144) + 125) as \"b50\", \n(((\"First32\"::integer & 131072) / 131072) + 123) as \"b49\", \n(((\"First32\"::integer & 65536) / 65536) + 121) as \"b48\", \n(((\"First32\"::integer & 32768) / 32768) + 115) as \"b47\", \n(((\"First32\"::integer & 16384) / 16384) + 113) as \"b46\", \n(((\"First32\"::integer & 8192) / 8192) + 111) as \"b45\", \n(((\"First32\"::integer & 4096) / 4096) + 109) as \"b44\", \n(((\"First32\"::integer & 2048) / 2048) + 107) as \"b43\", \n(((\"First32\"::integer & 1024) / 1024) + 105) as \"b42\", \n(((\"First32\"::integer & 512) / 512) + 103) as \"b41\", \n(((\"First32\"::integer & 256) / 256) + 101) as \"b40\", \n(((\"First32\"::integer & 128) / 128) + 95) as \"b39\", \n(((\"First32\"::integer & 64) / 64) + 93) as \"b38\", \n(((\"First32\"::integer & 32) / 32) + 91) as \"b37\", \n(((\"First32\"::integer & 16) / 16) + 89) as \"b36\", \n(((\"First32\"::integer & 8) / 8) + 87) as \"b35\", \n(((\"First32\"::integer & 4) / 4) + 85) as \"b34\", \n(((\"First32\"::integer & 2) / 2) + 83) as \"b33\", \n(((\"First32\"::integer & 1) / 1) + 81) as \"b32\", \n(((\"Second32\"::integer & 2147483648) / 2147483648) + 75) as \"b31\", \n(((\"Second32\"::integer & 1073741824) / 1073741824) + 73) as \"b30\", \n(((\"Second32\"::integer & 536870912) / 536870912) + 71) as \"b29\", \n(((\"Second32\"::integer & 268435456) / 268435456) + 69) as \"b28\", \n(((\"Second32\"::integer & 134217728) / 134217728) + 67) as \"b27\", \n(((\"Second32\"::integer & 67108864) / 67108864) + 65) as \"b26\", \n(((\"Second32\"::integer & 33554432) / 33554432) + 63) as \"b25\", \n(((\"Second32\"::integer & 16777216) / 16777216) + 61) as \"b24\", \n(((\"Second32\"::integer & 8388608) / 8388608) + 55) as \"b23\", \n(((\"Second32\"::integer & 4194304) / 4194304) + 53) as \"b22\", \n(((\"Second32\"::integer & 2097152) / 2097152) + 51) as \"b21\", \n(((\"Second32\"::integer & 1048576) / 1048576) + 49) as \"b20\", \n(((\"Second32\"::integer & 524288) / 524288) + 47) as \"b19\", \n(((\"Second32\"::integer & 262144) / 262144) + 45) as \"b18\", \n(((\"Second32\"::integer & 131072) / 131072) + 43) as \"b17\", \n(((\"Second32\"::integer & 65536) / 65536) + 41) as \"b16\", \n(((\"Second32\"::integer & 32768) / 32768) + 35) as \"b15\", \n(((\"Second32\"::integer & 16384) / 16384) + 33) as \"b14\", \n(((\"Second32\"::integer & 8192) / 8192) + 31) as \"b13\", \n(((\"Second32\"::integer & 4096) / 4096) + 29) as \"b12\", \n(((\"Second32\"::integer & 2048) / 2048) + 27) as \"b11\", \n(((\"Second32\"::integer & 1024) / 1024) + 25) as \"b10\", \n(((\"Second32\"::integer & 512) / 512) + 23) as \"b9\", \n(((\"Second32\"::integer & 256) / 256) + 21) as \"b8\", \n(((\"Second32\"::integer & 128) / 128) + 15) as \"b7\", \n(((\"Second32\"::integer & 64) / 64) + 13) as \"b6\", \n(((\"Second32\"::integer & 32) / 32) + 11) as \"b5\", \n(((\"Second32\"::integer & 16) / 16) + 9) as \"b4\", \n(((\"Second32\"::integer & 8) / 8) + 7) as \"b3\", \n(((\"Second32\"::integer & 4) / 4) + 5) as \"b2\", \n(((\"Second32\"::integer & 2) / 2) + 3) as \"b1\", \n(((\"Second32\"::integer & 1) / 1) + 1) as \"b0\"  FROM \"rawCANData\" WHERE $timeFilter and \"pid\" = '$pids' and \"bus\" = '$bus'",
-          "rawQuery": true,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "First32"
-                ],
-                "type": "field"
-              }
-            ],
-            [
-              {
-                "params": [
-                  "Second32"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Bus $bus : PID $pids",
-      "tooltip": {
-        "shared": false,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transparent": true,
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "decimals": null,
-          "format": "short",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        },
-        {
-          "decimals": null,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": true,
-        "alignLevel": null
-      }
+      "type": "timeseries"
     }
   ],
   "refresh": false,
-  "schemaVersion": 16,
-  "style": "dark",
+  "schemaVersion": 39,
   "tags": [],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
-          "text": "0",
+          "selected": true,
+          "text": [
+            "658"
+          ],
           "value": [
-            "0"
+            "658"
           ]
         },
-        "datasource": "InfluxDB",
-        "definition": "show tag values with key = \"bus\"",
-        "hide": 0,
-        "includeAll": false,
-        "label": "CAN Bus",
-        "multi": true,
-        "name": "bus",
-        "options": [],
-        "query": "show tag values with key = \"bus\"",
-        "refresh": 2,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 3,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      },
-      {
-        "allValue": null,
-        "current": {
-          "text": "148 + 228",
-          "value": [
-            "148",
-            "228"
-          ]
+        "datasource": {
+          "type": "influxdb",
+          "uid": "d119d2d5-0e3a-4d36-97b6-6c0ae657a3c1"
         },
-        "datasource": "InfluxDB",
-        "definition": "show tag values with key = \"pid\" where bus = '$bus'",
+        "definition": "show tag values with key = \"pid\"",
         "hide": 0,
         "includeAll": false,
-        "label": null,
+        "label": "PID",
         "multi": true,
         "name": "pids",
         "options": [],
-        "query": "show tag values with key = \"pid\" where bus = '$bus'",
-        "refresh": 2,
+        "query": "show tag values with key = \"pid\"",
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
-        "sort": 3,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
   "time": {
-    "from": "2018-12-20T22:04:21.491Z",
-    "to": "2018-12-20T22:19:21.491Z"
+    "from": "2024-01-15T04:23:45.181Z",
+    "to": "2024-01-15T04:24:07.895Z"
   },
   "timepicker": {
-    "nowDelay": "",
     "refresh_intervals": [
-      "100ms",
-      " 150ms",
-      " 200ms",
-      " 300ms",
-      " 500ms",
-      " 1s",
-      " 2s",
-      " 3s",
-      " 4s",
-      " 5s",
+      "500ms",
+      "1s",
+      "5s",
       "10s",
       "30s",
       "1m",
-      "5m"
-    ],
-    "time_options": [
       "5m",
       "15m",
+      "30m",
       "1h",
-      "6h",
-      "12h",
-      "24h",
-      "2d",
-      "7d",
-      "30d"
+      "2h"
     ]
   },
   "timezone": "",
-  "title": "RawFrames-Binary",
-  "uid": "tZLWzDyik",
-  "version": 5
+  "title": "New dashboard",
+  "uid": "ab23a4b7-76e1-4d74-9217-918f4967aca3",
+  "version": 16,
+  "weekStart": ""
 }
